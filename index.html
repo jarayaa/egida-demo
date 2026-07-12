@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ÉGIDA — Portal de Autogestión de Madurez y Cumplimiento Normativo</title>
+<style>
+:root{--fondo:#1c1c1e;--panel:rgba(44,44,46,.72);--panel-solido:#2c2c2e;--elev:#3a3a3c;--borde:rgba(255,255,255,.12);--texto:#f2f2f7;--texto2:rgba(235,235,245,.6);--texto3:rgba(235,235,245,.38);--azul:#0a84ff;--azul2:#0060df;--verde:#30d158;--amarillo:#ffd60a;--rojo:#ff453a;--ok:#30d158;--warn:#ff9f0a;--bad:#ff453a;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+body{background:radial-gradient(1200px 800px at 20% -10%, #2b3a55 0%, transparent 55%),radial-gradient(1000px 700px at 110% 10%, #3a2b4d 0%, transparent 50%),var(--fondo);color:var(--texto);min-height:100vh}
+.banner{background:rgba(255,214,10,.12);border-bottom:1px solid rgba(255,214,10,.35);padding:8px 16px;font-size:12.5px;text-align:center;color:#ffd60a;backdrop-filter:blur(12px)}
+header{background:var(--panel);backdrop-filter:blur(24px) saturate(1.4);-webkit-backdrop-filter:blur(24px) saturate(1.4);border-bottom:1px solid var(--borde);color:var(--texto);padding:12px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.marca{display:flex;align-items:center;gap:14px}
+.logo{width:44px;height:44px;flex-shrink:0;filter:drop-shadow(0 0 10px rgba(10,132,255,.4))}
+header h1{font-size:16px;font-weight:600;letter-spacing:.2px}
+header .rol{font-size:12.5px;color:var(--texto2)}
+nav{background:rgba(28,28,30,.65);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--borde);padding:6px 24px;display:flex;gap:6px;flex-wrap:wrap}
+nav button{background:none;border:none;color:var(--texto2);padding:8px 16px;cursor:pointer;font-size:13.5px;border-radius:8px;transition:all .18s}
+nav button:hover{background:rgba(255,255,255,.08);color:var(--texto)}
+nav button.activo{color:#fff;background:var(--azul);font-weight:600}
+main{max-width:1000px;margin:24px auto;padding:0 16px}
+.card{background:var(--panel);backdrop-filter:blur(28px) saturate(1.3);-webkit-backdrop-filter:blur(28px) saturate(1.3);border:1px solid var(--borde);border-radius:14px;box-shadow:0 12px 32px rgba(0,0,0,.45);padding:24px;margin-bottom:18px}
+h2{color:var(--texto);font-size:19px;font-weight:600;margin-bottom:6px}
+.sub{color:var(--texto2);font-size:13px;margin-bottom:16px}
+/* login */
+#vista-login{max-width:420px;margin:48px auto}
+label{display:block;font-size:12.5px;color:var(--texto2);margin:12px 0 5px}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--borde);border-radius:9px;font-size:14px;background:rgba(118,118,128,.18);color:var(--texto);outline:none;transition:border .15s, box-shadow .15s}
+input:focus,select:focus{border-color:var(--azul);box-shadow:0 0 0 3px rgba(10,132,255,.25)}
+select option{background:var(--panel-solido);color:var(--texto)}
+.btn{background:var(--azul);color:#fff;border:none;border-radius:9px;padding:11px 20px;font-size:14px;font-weight:600;cursor:pointer;margin-top:16px;transition:background .15s}
+.btn:hover{background:var(--azul2)}
+/* autodiagnóstico */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:rgba(118,118,128,.22);color:var(--texto2);padding:9px 8px;text-align:left;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+th:first-child{border-radius:8px 0 0 8px}th:last-child{border-radius:0 8px 8px 0}
+td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,.07);vertical-align:top;color:var(--texto)}
+tr:hover td{background:rgba(255,255,255,.045)}
+.tag{display:inline-block;padding:2px 9px;border-radius:10px;font-size:10.5px;font-weight:600;color:#fff}
+.f-IDENTIFICAR{background:#5e5ce6}.f-PROTEGER{background:#ff375f}.f-DETECTAR{background:#30d158;color:#04290f}.f-RESPONDER{background:#0a84ff}.f-RECUPERAR{background:#64d2ff;color:#062a38}
+td select{width:64px;padding:4px}
+.imi-caja{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.imi-num{background:linear-gradient(135deg,var(--azul) 0%,#5e5ce6 100%);color:#fff;border-radius:14px;padding:14px 26px;text-align:center;box-shadow:0 8px 22px rgba(10,132,255,.35)}
+.imi-num .v{font-size:34px;font-weight:700;letter-spacing:-.5px}
+.imi-num .l{font-size:10.5px;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.6px}
+/* panel: barras */
+.barra-fila{display:flex;align-items:center;gap:10px;margin:9px 0;font-size:13px}
+.barra-fila .nom{width:110px;text-align:right;color:var(--texto2)}
+.barra-cont{flex:1;background:rgba(118,118,128,.2);border-radius:7px;height:26px;position:relative;overflow:hidden}
+.barra{height:100%;border-radius:7px;background:linear-gradient(90deg,var(--azul),#5e5ce6);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600;min-width:34px;transition:width .4s}
+/* asistente */
+#chat{height:380px;overflow-y:auto;border:1px solid var(--borde);border-radius:12px;padding:14px;background:rgba(28,28,30,.55);margin-bottom:10px}
+.msg{max-width:85%;padding:10px 14px;border-radius:14px;margin-bottom:10px;font-size:13.5px;line-height:1.55;white-space:pre-wrap}
+.msg.u{background:var(--azul);color:#fff;margin-left:auto;border-bottom-right-radius:4px}
+.msg.a{background:var(--elev);border:1px solid var(--borde);color:var(--texto);border-bottom-left-radius:4px}
+.msg.a .adv{display:block;margin-top:8px;font-size:11.5px;color:var(--texto3);font-style:italic}
+.fila-input{display:flex;gap:8px}
+.fila-input input{flex:1}
+.fila-input .btn{margin-top:0}
+.sugerencias{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.sugerencias button{background:rgba(118,118,128,.2);border:1px solid var(--borde);color:var(--texto);border-radius:15px;padding:5px 13px;font-size:12px;cursor:pointer;transition:background .15s}
+.sugerencias button:hover{background:rgba(10,132,255,.3)}
+.nota{background:rgba(10,132,255,.1);border-left:3px solid var(--azul);padding:10px 14px;font-size:12.5px;color:var(--texto2);border-radius:0 8px 8px 0;margin-top:14px}
+.oculto{display:none}
+iframe{background:#1c1c1e}
+footer{text-align:center;color:var(--texto3);font-size:12px;padding:22px}
+@media(max-width:640px){td .preg{font-size:12px} header h1{font-size:14px} header{padding-left:84px}}
+</style>
+</head>
+<body>
+<div class="banner">⚠️ <strong>Maqueta de demostración (GitHub Pages), sin backend propio.</strong> El cálculo del IMI es real (determinístico, en su navegador) y el asistente normativo está <strong>conectado en vivo</strong> al chatbot RAG del MVP validado (incrustado desde su URL pública). La versión funcional completa (autenticación, persistencia, informes PDF) se ejecuta con docker compose.</div>
+<header>
+  <div class="marca">
+    <svg class="logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logotipo del portal">
+      <defs>
+        <linearGradient id="gLogo" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#0a84ff"/><stop offset="1" stop-color="#5e5ce6"/>
+        </linearGradient>
+        <linearGradient id="gBarras" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stop-color="#0a84ff"/><stop offset="1" stop-color="#64d2ff"/>
+        </linearGradient>
+      </defs>
+      <!-- escudo de trazado circuital (seguridad + tecnología) -->
+      <path d="M24 5 L39 11 V24 C39 33.5 32.6 40.5 24 43.5 C15.4 40.5 9 33.5 9 24 V11 Z"
+            fill="rgba(10,132,255,.10)" stroke="url(#gLogo)" stroke-width="2" stroke-linejoin="round"/>
+      <!-- pistas de circuito con nodos -->
+      <path d="M9 18 H4 V13" stroke="#5e5ce6" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <circle cx="4" cy="11.5" r="1.7" fill="#5e5ce6"/>
+      <path d="M39 26 H44 V31" stroke="#0a84ff" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <circle cx="44" cy="32.5" r="1.7" fill="#0a84ff"/>
+      <!-- barras ascendentes de madurez (escala 0–3) -->
+      <rect x="14.5" y="27" width="4.5" height="7"  rx="1.3" fill="url(#gBarras)" opacity=".5"/>
+      <rect x="21"   y="23" width="4.5" height="11" rx="1.3" fill="url(#gBarras)" opacity=".75"/>
+      <rect x="27.5" y="19" width="4.5" height="15" rx="1.3" fill="url(#gBarras)"/>
+      <!-- nodo de cumplimiento verificado -->
+      <path d="M29.75 17.4 V15.8" stroke="#30d158" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="29.75" cy="12.6" r="3.3" fill="#1c1c1e" stroke="#30d158" stroke-width="1.5"/>
+      <path d="M28.35 12.6 l1.05 1.05 l1.85 -2.05" stroke="#30d158" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h1>Portal de Autogestión de Madurez y Cumplimiento Normativo — ÉGIDA</h1>
+  </div>
+  <span class="rol" id="rol-actual"></span>
+</header>
+<nav id="menu" class="oculto">
+  <button data-v="autodiagnostico" class="activo">Autodiagnóstico</button>
+  <button data-v="panel">Panel de indicadores</button>
+  <button data-v="asistente">Asistente normativo (IA)</button>
+  <button data-v="salir">Cerrar sesión</button>
+</nav>
+<main>
+
+<section id="vista-login" class="card">
+  <h2>Inicio de sesión</h2>
+  <p class="sub">Demostración: el perfil se asigna automáticamente según el correo institucional. Si la cuenta tiene más de un rol, el selector se desbloquea. En la versión funcional, la autenticación usa JWT con bloqueo por intentos y auditoría.</p>
+  <label>Correo institucional</label>
+  <input type="email" id="correo" value="ris@organismo.gob.cl" oninput="asignarRoles()">
+  <label>Contraseña</label>
+  <input type="password" value="demo-no-real">
+  <label>Perfil de rol (asignado por el correo)</label>
+  <select id="sel-rol" disabled></select>
+  <p class="sub" id="pista-rol" style="margin:6px 0 0;font-size:11.5px"></p>
+  <button class="btn" onclick="ingresar()">Ingresar</button>
+</section>
+
+<p class="nota" id="cuentas-demo" style="max-width:420px;margin:0 auto 18px"><strong>Cuentas de demostración:</strong><br>
+<strong>ris@organismo.gob.cl</strong> (Técnico) · <strong>jefatura@organismo.gob.cl</strong> (Directivo) · <strong>soporte@organismo.gob.cl</strong> (Operativo) · <strong>delegado@organismo.gob.cl</strong> (Técnico + Directivo, selector desbloqueado)</p>
+
+<section id="vista-autodiagnostico" class="card oculto">
+  <h2>Autodiagnóstico de madurez — 20 controles críticos NCh-ISO 27001.Of2009</h2>
+  <p class="sub">Evalúe cada control en escala 0 (inexistente) a 3 (optimizado). El IMI y los promedios se recalculan en tiempo real: IMI = (Σ niveles / 60) × 100. Cálculo determinístico, sin intervención de IA.</p>
+  <table id="tabla-controles"><thead><tr><th>Control</th><th>Pregunta</th><th>Función NTSIC</th><th>Nivel</th></tr></thead><tbody></tbody></table>
+  <div class="imi-caja">
+    <div class="imi-num"><div class="v" id="imi-valor">0,0</div><div class="l">IMI (0–100)</div></div>
+    <div style="flex:1;min-width:260px" id="mini-barras"></div>
+  </div>
+</section>
+
+<section id="vista-panel" class="card oculto">
+  <h2>Panel de indicadores</h2>
+  <p class="sub" id="panel-sub">Promedio de madurez por función NTSIC (escala 0–3), calculado desde su autodiagnóstico.</p>
+  <div id="barras-panel"></div>
+  <div class="imi-caja"><div class="imi-num"><div class="v" id="imi-panel">0,0</div><div class="l">IMI institucional</div></div>
+  <div style="flex:1;font-size:13px;color:var(--grey)" id="brechas-txt"></div></div>
+  <p class="nota">En la versión funcional: tendencia histórica entre evaluaciones, top de brechas con exigencia normativa, informe PDF descargable y vistas diferenciadas por rol (Directivo/Técnico/Operativo).</p>
+</section>
+
+<section id="vista-asistente" class="card oculto">
+  <h2>Asistente normativo — consulta con citas verificables</h2>
+  <p class="sub">Asistido por IA (RAG). Las respuestas citan instrumento y artículo, y requieren validación humana.</p>
+  <div class="sugerencias" style="margin:0 0 12px">
+    <button id="tab-vivo" class="btn" style="margin:0" onclick="modoAsistente('vivo')">Asistente EN VIVO (RAG real)</button>
+    <button id="tab-demo" style="background:rgba(118,118,128,.2);border:1px solid var(--borde);color:var(--texto);border-radius:9px;padding:11px 20px;font-size:14px;cursor:pointer" onclick="modoAsistente('demo')">Respuestas de la validación (sin conexión)</button>
+  </div>
+  <div id="asistente-vivo">
+    <p class="nota" style="margin:0 0 10px">Este chat está <strong>conectado en vivo</strong> al chatbot RAG del MVP validado (16/16 consultas, 0 alucinaciones), incrustado desde su URL pública. Pruebe: «¿Qué plazos de reporte aplican si un servicio público sufre una denegación de servicio?»</p>
+    <iframe src="https://www.chatbase.co/chatbot-iframe/4skjIqkALPvEuiMtluiU-" style="width:100%;height:480px;border:1px solid var(--borde);border-radius:12px" title="Asistente normativo RAG en vivo"></iframe>
+  </div>
+  <div id="asistente-demo" class="oculto">
+    <p class="nota" style="margin:0 0 10px">Modo sin conexión: reproduce textualmente respuestas de la validación del MVP.</p>
+    <div id="chat"><div class="msg a">Buenas tardes. Puedo responder consultas sobre el DS N°7/2023, el DS N°295/2024, la taxonomía de incidentes (Res. Ex. N°7/2025), la nómina OIV (Res. Ex. N°87/2025) y la NCh-ISO 27001.Of2009. Seleccione una consulta de ejemplo o escríbala.</div></div>
+    <div class="fila-input">
+      <input type="text" id="pregunta" placeholder="Escriba su consulta normativa…" onkeydown="if(event.key==='Enter')enviar()">
+      <button class="btn" onclick="enviar()">Consultar</button>
+    </div>
+    <div class="sugerencias" id="sugerencias"></div>
+  </div>
+</section>
+
+</main>
+<footer>Proyecto de título ACIF3003 — Universidad Andrés Bello · Jaime Araya Aros · Maqueta de demostración v0.A</footer>
+
+<script>
+// ── 20 controles reales (data/controles_criticos.csv) ──
+const CONTROLES=[
+["A.7.1.1","¿Existe un inventario actualizado y completo de los activos de información?","IDENTIFICAR"],
+["A.7.2.1","¿La información se clasifica según sensibilidad y criticidad conforme a directrices formales?","IDENTIFICAR"],
+["A.6.1.3","¿Están asignadas formalmente las responsabilidades de seguridad (RIS y RAI designados)?","IDENTIFICAR"],
+["A.15.1.1","¿Se identifica y documenta la normativa aplicable (DS N°7/2023, DS N°295/2024, Ley N°21.663)?","IDENTIFICAR"],
+["A.11.2.1","¿Existe un proceso formal de alta y baja de usuarios para el acceso a sistemas?","PROTEGER"],
+["A.10.5.1","¿Se realizan respaldos periódicos de la información y se prueban según política?","PROTEGER"],
+["A.8.2.2","¿El personal recibe capacitación y sensibilización periódica en seguridad de la información?","PROTEGER"],
+["A.10.4.1","¿Existen controles de detección y prevención contra código malicioso?","PROTEGER"],
+["A.10.10.1","¿Se generan y conservan registros de auditoría (logs) de eventos de seguridad?","DETECTAR"],
+["A.10.10.2","¿Se monitorea el uso de los sistemas de procesamiento de información?","DETECTAR"],
+["A.13.1.1","¿Existen canales formales para informar los eventos de seguridad lo antes posible?","DETECTAR"],
+["A.13.1.2","¿El personal, contratistas y terceros reportan las debilidades observadas o sospechadas?","DETECTAR"],
+["A.13.2.1","¿Existen responsabilidades y procedimientos para una respuesta rápida y metódica a incidentes?","RESPONDER"],
+["A.13.2.2","¿Se cuantifican y monitorean los tipos, volúmenes y costos de los incidentes?","RESPONDER"],
+["A.13.2.3","¿Se recolecta y preserva evidencia de incidentes de forma compatible con acciones legales?","RESPONDER"],
+["A.6.1.6","¿Existen contactos formales con autoridades y flujo de reporte al CSIRT Nacional (plazos DS N°295/2024)?","RESPONDER"],
+["A.14.1.1","¿Existe un proceso de gestión de continuidad del negocio que aborde la seguridad de la información?","RECUPERAR"],
+["A.14.1.3","¿Los planes de continuidad incorporan la seguridad de la información?","RECUPERAR"],
+["A.14.1.4","¿Existe un marco de planificación que priorice la restauración de servicios esenciales?","RECUPERAR"],
+["A.14.1.5","¿Los planes de continuidad se prueban y actualizan periódicamente?","RECUPERAR"]];
+// Perfil de ejemplo del MVP validado (IMI 26,7)
+const NIVELES_EJEMPLO=[2,1,2,1,2,1,1,1,1,0,1,1,1,0,1,0,0,0,0,0];
+const FUNCIONES=["IDENTIFICAR","PROTEGER","DETECTAR","RESPONDER","RECUPERAR"];
+const ADVERTENCIA="Esta respuesta constituye apoyo normativo y requiere validación humana; no reemplaza la decisión institucional.";
+const NO_COBERTURA="Esta materia no está cubierta por el corpus normativo indexado; consulte la fuente oficial.";
+
+// ── Respuestas PREGRABADAS de la validación del MVP (16/16, 0 alucinaciones) ──
+const QA=[
+ {claves:["denegación","denegacion","plazos","dos","reporte"],
+  q:"¿Qué plazos de reporte aplican si un servicio público sufre una denegación de servicio?",
+  r:"Si el hecho tiene efecto significativo (DS N°295/2024, art. 3), la denegación de servicio está comprendida en la taxonomía como “indisponibilidad y/o denegación de servicio” (Resolución Exenta N°7/2025 de la ANCI, art. 5).\n\nPlazos aplicables:\n1) Alerta temprana: dentro de 3 horas desde que la institución tomó conocimiento (DS N°295/2024, art. 9).\n2) Segundo reporte: dentro de 72 horas desde el conocimiento (art. 10). Si la institución es OIV y ve afectada la prestación de sus servicios esenciales, la actualización debe entregarse en 24 horas (art. 10).\n3) Plan de acción: solo OIV, en un plazo no superior a 7 días corridos (art. 11).\n4) Informe final: dentro de 15 días corridos desde el envío de la alerta temprana, si el incidente fue gestionado (art. 12); si no, informes parciales cada 15 días (art. 13)."},
+ {claves:["bancoestado","banco del estado","oiv"],
+  q:"¿El Banco del Estado de Chile figura en la nómina de Operadores de Importancia Vital?",
+  r:"Sí. Banco del Estado de Chile figura en la nómina de Operadores de Importancia Vital: aparece como “BANCO DEL ESTADO DE CHILE” en la Resolución Exenta N°87/2025 de la ANCI, bajo la sección de instituciones que realizan actividades de banca, servicios financieros y medios de pago."},
+ {claves:["viernes","lunes","esperar","18:00"],
+  q:"Detectamos un incidente hoy viernes a las 18:00. ¿Podemos esperar al lunes para reportarlo?",
+  r:"No. Si se trata de un incidente de ciberseguridad con efecto significativo, la alerta temprana debe enviarse dentro de 3 horas desde que se tomó conocimiento (DS N°295/2024, art. 9).\n\nEn la práctica: si tomaron conocimiento el viernes a las 18:00 y el incidente es reportable, el envío debe hacerse antes de las 21:00 del mismo viernes. Luego corre el segundo reporte dentro de 72 horas (art. 10)."},
+ {claves:["funciones","ntsic"],
+  q:"¿Cuáles son las cinco funciones de la NTSIC?",
+  r:"Las cinco funciones de la NTSIC son: identificación, protección, detección, respuesta y recuperación (DS N°7/2023, arts. 7 al 11). El marco exige organizar la seguridad de la información institucional en torno a estas funciones, con roles obligatorios no externalizables (art. 5): RIS, RAI, Delegado de Ciberseguridad y la jefatura que aprueba la Política mediante acto administrativo."},
+ {claves:["multa","utm","sanción","sancion","artículo 25","articulo 25"],
+  q:"¿Qué multa establece el DS N°295/2024 por no reportar a tiempo?",
+  r:NO_COBERTURA+"\n\n(El DS N°295/2024 regula los plazos y contenidos de los reportes; el régimen sancionatorio está en la Ley N°21.663, que no forma parte del corpus indexado de esta versión.)"},
+ {claves:["capital","francia","clima","fútbol","futbol"],
+  q:"¿Cuál es la capital de Francia?",
+  r:NO_COBERTURA}
+];
+
+// ── Asignación de roles por correo (RBAC simulado; en la versión funcional viene del JWT) ──
+const CUENTAS_DEMO={
+  "ris@organismo.gob.cl":["Técnico"],
+  "rai@organismo.gob.cl":["Técnico"],
+  "jefatura@organismo.gob.cl":["Directivo"],
+  "soporte@organismo.gob.cl":["Operativo"],
+  "delegado@organismo.gob.cl":["Técnico","Directivo"]
+};
+function rolesDeCorreo(correo){
+  const c=correo.trim().toLowerCase();
+  if(CUENTAS_DEMO[c]) return CUENTAS_DEMO[c];
+  // heurística de demostración sobre la parte local del correo
+  const local=c.split("@")[0];
+  if(/jefe|jefatura|direc|gerente/.test(local)) return ["Directivo"];
+  if(/ris|rai|tecnic|seguridad|ciber|delegado/.test(local)) return ["Técnico"];
+  return ["Operativo"];
+}
+function asignarRoles(){
+  const roles=rolesDeCorreo(document.getElementById("correo").value||"");
+  const sel=document.getElementById("sel-rol");
+  sel.innerHTML=roles.map(r=>`<option>${r}</option>`).join("");
+  sel.disabled=roles.length<2;
+  document.getElementById("pista-rol").textContent=roles.length<2
+    ?"Perfil único asignado a esta cuenta; selector bloqueado."
+    :"Esta cuenta tiene "+roles.length+" roles: seleccione con cuál desea ingresar.";
+}
+let rol="";
+function ingresar(){
+  rol=document.getElementById("sel-rol").value;
+  document.getElementById("rol-actual").textContent="Sesión de demostración · Perfil: "+rol;
+  document.getElementById("vista-login").classList.add("oculto");
+  document.getElementById("cuentas-demo").classList.add("oculto");
+  document.getElementById("menu").classList.remove("oculto");
+  construirTabla(); mostrar("autodiagnostico");
+}
+document.getElementById("menu").addEventListener("click",e=>{
+  if(e.target.dataset.v==="salir"){location.reload();return;}
+  if(e.target.dataset.v) mostrar(e.target.dataset.v);
+});
+function mostrar(v){
+  ["autodiagnostico","panel","asistente"].forEach(x=>document.getElementById("vista-"+x).classList.toggle("oculto",x!==v));
+  document.querySelectorAll("#menu button").forEach(b=>b.classList.toggle("activo",b.dataset.v===v));
+  if(v==="panel") pintarPanel();
+}
+function construirTabla(){
+  const tb=document.querySelector("#tabla-controles tbody"); tb.innerHTML="";
+  CONTROLES.forEach((c,i)=>{
+    const tr=document.createElement("tr");
+    tr.innerHTML=`<td><strong>${c[0]}</strong></td><td class="preg">${c[1]}</td><td><span class="tag f-${c[2]}">${c[2].charAt(0)+c[2].slice(1).toLowerCase()}</span></td>
+    <td><select data-i="${i}" onchange="recalcular()">${[0,1,2,3].map(n=>`<option ${n===NIVELES_EJEMPLO[i]?"selected":""}>${n}</option>`).join("")}</select></td>`;
+    tb.appendChild(tr);
+  });
+  recalcular();
+}
+function niveles(){return [...document.querySelectorAll("#tabla-controles select")].map(s=>+s.value);}
+function calcular(){
+  const n=niveles(); const imi=(n.reduce((a,b)=>a+b,0)/60)*100;
+  const prom={}; FUNCIONES.forEach(f=>{const idx=CONTROLES.map((c,i)=>c[2]===f?i:-1).filter(i=>i>=0);
+    prom[f]=idx.reduce((a,i)=>a+n[i],0)/idx.length;});
+  return {imi:Math.round(imi*10)/10, prom};
+}
+function fmt(x){return x.toFixed(1).replace(".",",");}
+function recalcular(){
+  const {imi,prom}=calcular();
+  document.getElementById("imi-valor").textContent=fmt(imi);
+  document.getElementById("mini-barras").innerHTML=FUNCIONES.map(f=>barra(f,prom[f])).join("");
+}
+function barra(f,v){const pct=Math.max(v/3*100,4);
+  return `<div class="barra-fila"><span class="nom">${f.charAt(0)+f.slice(1).toLowerCase()}</span><div class="barra-cont"><div class="barra" style="width:${pct}%">${fmt(v)}</div></div></div>`;}
+function pintarPanel(){
+  const {imi,prom}=calcular();
+  document.getElementById("imi-panel").textContent=fmt(imi);
+  document.getElementById("barras-panel").innerHTML=FUNCIONES.map(f=>barra(f,prom[f])).join("");
+  const brechas=CONTROLES.map((c,i)=>({c,n:niveles()[i]})).filter(x=>x.n<2);
+  document.getElementById("brechas-txt").innerHTML=`<strong>${brechas.length} controles en brecha</strong> (nivel &lt; 2). Los más críticos: ${brechas.slice(0,4).map(x=>x.c[0]).join(", ")||"ninguno"}. En la versión funcional, el informe PDF detalla cada brecha con su exigencia normativa y recomendación.`;
+}
+// asistente: alternar en vivo / demo
+function modoAsistente(m){
+  document.getElementById("asistente-vivo").classList.toggle("oculto",m!=="vivo");
+  document.getElementById("asistente-demo").classList.toggle("oculto",m!=="demo");
+  const vivo=m==="vivo";
+  const tv=document.getElementById("tab-vivo"), td=document.getElementById("tab-demo");
+  tv.style.background=vivo?"var(--azul)":"rgba(118,118,128,.2)"; tv.style.color="var(--texto)"; tv.style.border=vivo?"none":"1px solid var(--borde)";
+  td.style.background=vivo?"rgba(118,118,128,.2)":"var(--azul)"; td.style.color="var(--texto)"; td.style.border=vivo?"1px solid var(--borde)":"none";
+}
+asignarRoles(); // inicializa el selector según el correo precargado
+const sug=document.getElementById("sugerencias");
+QA.slice(0,4).forEach(x=>{const b=document.createElement("button");b.textContent=x.q;b.onclick=()=>{document.getElementById("pregunta").value=x.q;enviar();};sug.appendChild(b);});
+function enviar(){
+  const inp=document.getElementById("pregunta"); const t=inp.value.trim(); if(!t)return;
+  agregar("u",t); inp.value="";
+  const tl=t.toLowerCase();
+  const hit=QA.find(x=>x.claves.some(k=>tl.includes(k)));
+  const resp=hit?hit.r:NO_COBERTURA;
+  setTimeout(()=>agregar("a",resp,true),600);
+}
+function agregar(tipo,txt,adv){
+  const d=document.createElement("div");d.className="msg "+tipo;d.textContent=txt;
+  if(adv&&txt!==NO_COBERTURA){const s=document.createElement("span");s.className="adv";s.textContent="⚠ "+ADVERTENCIA;d.appendChild(s);}
+  const ch=document.getElementById("chat");ch.appendChild(d);ch.scrollTop=ch.scrollHeight;
+}
+</script>
+</body>
+</html>
