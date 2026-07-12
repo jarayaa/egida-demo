@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" fill="none">
+  <rect width="480" height="280" rx="16" fill="#1c1c1e"/>
+  <rect x="16" y="16" width="448" height="40" rx="8" fill="rgba(44,44,46,0.72)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="32" y="42" font-family="system-ui" font-size="14" font-weight="600" fill="#f2f2f7">Asistente Normativo RAG — Citación Obligatoria</text>
+  <!-- User bubble -->
+  <rect x="180" y="72" width="280" height="36" rx="14" fill="rgba(10,132,255,0.2)" stroke="rgba(10,132,255,0.4)" stroke-width="1"/>
+  <text x="196" y="94" font-family="system-ui" font-size="11" fill="#f2f2f7">¿Cuáles son los plazos de reporte de incidentes?</text>
+  <!-- Assistant bubble -->
+  <rect x="16" y="120" width="380" height="100" rx="14" fill="rgba(44,44,46,0.9)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="32" y="142" font-family="system-ui" font-size="11" fill="#f2f2f7">La alerta temprana debe enviarse dentro de 3 horas desde</text>
+  <text x="32" y="158" font-family="system-ui" font-size="11" fill="#f2f2f7">el conocimiento del incidente (art. 9, DS N°295/2024)...</text>
+  <!-- Citation chips -->
+  <rect x="32" y="172" width="140" height="20" rx="10" fill="rgba(10,132,255,0.12)" stroke="rgba(10,132,255,0.3)" stroke-width="1"/>
+  <text x="44" y="186" font-family="system-ui" font-size="9" fill="#0a84ff">DS N°295/2024, art. 9</text>
+  <rect x="180" y="172" width="160" height="20" rx="10" fill="rgba(10,132,255,0.12)" stroke="rgba(10,132,255,0.3)" stroke-width="1"/>
+  <text x="192" y="186" font-family="system-ui" font-size="9" fill="#0a84ff">DS N°295/2024, art. 10</text>
+  <!-- Warning strip -->
+  <rect x="32" y="198" width="348" height="16" rx="4" fill="rgba(255,159,10,0.08)" stroke="rgba(255,159,10,0.3)" stroke-width="1"/>
+  <text x="40" y="210" font-family="system-ui" font-size="8" fill="#ff9f0a">Requiere validación humana; no reemplaza la decisión institucional.</text>
+  <!-- Bottom description -->
+  <rect x="16" y="236" width="448" height="28" rx="8" fill="rgba(10,132,255,0.06)"/>
+  <text x="32" y="254" font-family="system-ui" font-size="10" fill="rgba(235,235,245,0.6)">Pipeline RAG: PDF → segmentación por artículo → embeddings pgvector → top-5 similitud coseno → LLM temp. 0 → citas verificables</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" fill="none">
+  <rect width="480" height="280" rx="16" fill="#1c1c1e"/>
+  <rect x="16" y="16" width="448" height="40" rx="8" fill="rgba(44,44,46,0.72)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="32" y="42" font-family="system-ui" font-size="14" font-weight="600" fill="#f2f2f7">Panel de Indicadores por Rol</text>
+  <!-- IMI Card -->
+  <rect x="16" y="72" width="140" height="90" rx="12" fill="rgba(44,44,46,0.72)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="32" y="96" font-family="system-ui" font-size="10" fill="rgba(235,235,245,0.6)">IMI VIGENTE</text>
+  <text x="32" y="132" font-family="system-ui" font-size="28" font-weight="700" fill="#ff9f0a">58,3</text>
+  <text x="100" y="132" font-family="system-ui" font-size="12" fill="rgba(235,235,245,0.6)">/100</text>
+  <text x="32" y="150" font-family="system-ui" font-size="10" fill="#30d158">+5,2 vs anterior</text>
+  <!-- Brechas Card -->
+  <rect x="172" y="72" width="100" height="90" rx="12" fill="rgba(44,44,46,0.72)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="188" y="96" font-family="system-ui" font-size="10" fill="rgba(235,235,245,0.6)">BRECHAS</text>
+  <text x="188" y="132" font-family="system-ui" font-size="28" font-weight="700" fill="#ff453a">8</text>
+  <text x="188" y="150" font-family="system-ui" font-size="10" fill="rgba(235,235,245,0.6)">controles &lt; nivel 2</text>
+  <!-- Radar placeholder -->
+  <rect x="288" y="72" width="176" height="90" rx="12" fill="rgba(44,44,46,0.72)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="316" y="96" font-family="system-ui" font-size="10" fill="rgba(235,235,245,0.6)">RADAR POR FUNCIÓN</text>
+  <polygon points="376,104 412,124 404,152 348,152 340,124" fill="rgba(10,132,255,0.25)" stroke="#0a84ff" stroke-width="1.5"/>
+  <!-- Trend -->
+  <rect x="16" y="178" width="448" height="86" rx="12" fill="rgba(44,44,46,0.72)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="32" y="202" font-family="system-ui" font-size="11" font-weight="600" fill="rgba(235,235,245,0.6)">TENDENCIA DEL IMI</text>
+  <polyline points="48,248 108,240 168,244 228,232 288,224 348,216 408,208" fill="none" stroke="#0a84ff" stroke-width="2" stroke-linecap="round"/>
+  <line x1="48" y1="252" x2="420" y2="252" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="32" y="268" font-family="system-ui" font-size="10" fill="rgba(235,235,245,0.38)">Datos 100% desde evaluaciones persistidas · Directivo: agregados · Técnico: detalle · Operativo: lectura</text>
+</svg>
