@@ -22,7 +22,8 @@
 Una **vitrina funcional** del portal ÉGIDA que corre directamente en el navegador, sin backend ni base de datos. Demuestra las capacidades núcleo del sistema:
 
 - 🎯 Autodiagnóstico de los 20 controles críticos del DS N°7/2023 con cálculo real del IMI
-- 📊 Panel de indicadores con promedios por función NTSIC
+- 🕸️ Malla normativa interactiva: grafo de los 20 controles por función NTSIC con resaltado de la cadena de dependencias
+- 📊 Panel de indicadores con gráfico de telaraña (radar) por función NTSIC y KPIs (IMI, controles en nivel objetivo, brechas)
 - 🤖 Asistente normativo RAG con citación obligatoria (conectado al chatbot del MVP validado)
 - 🔐 Simulación de roles (Directivo, Técnico, Operativo) asignados por correo
 
@@ -48,7 +49,17 @@ IMI = (Σ niveles / 60) × 100    [escala 0–100, 1 decimal]
 
 ---
 
-### 2. Panel de Indicadores por Rol
+### 2. Malla Normativa
+
+Los **20 controles críticos** se organizan por las 5 funciones NTSIC (Identificar, Proteger, Detectar, Responder, Recuperar). Las flechas representan una **secuencia sugerida de implementación**: para alcanzar un control conviene tener implementado el que lo precede. Al hacer clic en un control se resalta su cadena de prerrequisitos y dependientes.
+
+> **Interpretación metodológica propia de ÉGIDA.** La NCh-ISO 27001.Of2009 no define un orden de implementación entre sus controles; esta secuencia de dependencias es una sugerencia de remediación del proyecto y **no constituye orden normativo ni exigencia legal**.
+
+En la versión funcional, la malla se implementa con React Flow e incluye los modos **Norma**, **Comparador** (equivalencias entre ediciones ISO) y **Evaluación** (superpone su nivel de madurez sobre el grafo).
+
+---
+
+### 3. Panel de Indicadores por Rol
 
 <div align="center">
 
@@ -66,7 +77,7 @@ Visualice el estado de madurez de su organismo con indicadores diferenciados por
 
 ---
 
-### 3. Asistente Normativo con Citación Obligatoria
+### 4. Asistente Normativo con Citación Obligatoria
 
 <div align="center">
 
@@ -101,11 +112,13 @@ El perfil se asigna automáticamente por el correo ingresado:
 
 | Aspecto | Detalle |
 |---------|---------|
-| Archivo | `index.html` único, autocontenido (~50 KB) |
+| Archivo | `index.html` único, autocontenido (~51 KB, logo medallón embebido en data URI) |
 | Backend | No requiere — todo corre en el navegador |
 | Cálculos | IMI determinístico en JavaScript (replica backend) |
+| Malla | Grafo SVG por bandas NTSIC con resaltado de dependencias (vanilla JS) |
+| Panel | Gráfico de telaraña (radar) SVG + KPIs, dibujado en el navegador |
 | Asistente | iframe del chatbot Chatbase del MVP validado + modo offline |
-| Tema visual | macOS dark, translúcidos, acento #0a84ff |
+| Tema visual | macOS dark, translúcidos, acento #0a84ff, paleta NTSIC del sitio real |
 | Accesibilidad | WCAG AA (contraste, labels, foco) |
 
 ---
