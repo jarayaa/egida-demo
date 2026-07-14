@@ -21,7 +21,7 @@
 
 Una **vitrina funcional** del portal ÉGIDA que corre directamente en el navegador, sin backend ni base de datos. Demuestra las capacidades núcleo del sistema:
 
-- 🎯 Autodiagnóstico de los 20 controles críticos del DS N°7/2023 con cálculo real del IMI
+- 🎯 Autodiagnóstico de 45 controles (Anexo A NCh-ISO 27001.Of2009, alineados a las funciones NTSIC del DS N°7/2023) con cálculo real del IMI
 - 🕸️ Malla normativa interactiva: grafo de los 20 controles por función NTSIC con resaltado de la cadena de dependencias
 - 📊 Panel de indicadores con gráfico de telaraña (radar) por función NTSIC y KPIs (IMI, controles en nivel objetivo, brechas)
 - 🤖 Asistente normativo RAG con citación obligatoria (conectado al chatbot del MVP validado)
@@ -41,10 +41,10 @@ Una **vitrina funcional** del portal ÉGIDA que corre directamente en el navegad
 
 </div>
 
-Evalúe los **20 controles críticos** del Anexo A NCh-ISO 27001.Of2009, organizados por las 5 funciones del DS N°7/2023 (Identificar, Proteger, Detectar, Responder, Recuperar). El **Índice de Madurez Institucional (IMI)** se calcula en tiempo real con la fórmula determinística:
+Evalúe los **45 controles** del Anexo A NCh-ISO 27001.Of2009 (set ampliado, 9 por función), organizados por las 5 funciones del DS N°7/2023 (Identificar, Proteger, Detectar, Responder, Recuperar). El **Índice de Madurez Institucional (IMI)** se calcula en tiempo real con la fórmula determinística:
 
 ```
-IMI = (Σ niveles / 60) × 100    [escala 0–100, 1 decimal]
+IMI = (Σ niveles / 135) × 100    [45 controles × 3; escala 0–100, 1 decimal]
 ```
 
 ---

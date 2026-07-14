@@ -118,8 +118,8 @@ footer{text-align:center;color:var(--texto3);font-size:12px;padding:22px}
 <strong>ris@organismo.gob.cl</strong> (Técnico) · <strong>jefatura@organismo.gob.cl</strong> (Directivo) · <strong>soporte@organismo.gob.cl</strong> (Operativo) · <strong>delegado@organismo.gob.cl</strong> (Técnico + Directivo, selector desbloqueado)</p>
 
 <section id="vista-autodiagnostico" class="card oculto">
-  <h2>Autodiagnóstico de madurez — 20 controles críticos NCh-ISO 27001.Of2009</h2>
-  <p class="sub">Evalúe cada control en escala 0 (inexistente) a 3 (optimizado). El IMI y los promedios se recalculan en tiempo real: IMI = (Σ niveles / 60) × 100. Cálculo determinístico, sin intervención de IA.</p>
+  <h2>Autodiagnóstico de madurez — 45 controles NCh-ISO 27001.Of2009 (set ampliado)</h2>
+  <p class="sub">Evalúe cada control en escala 0 (inexistente) a 3 (optimizado). El IMI y los promedios se recalculan en tiempo real: IMI = (Σ niveles / 135) × 100 (45 controles, 9 por función). Cálculo determinístico, sin intervención de IA.</p>
   <table id="tabla-controles"><thead><tr><th>Control</th><th>Pregunta</th><th>Función NTSIC</th><th>Nivel</th></tr></thead><tbody></tbody></table>
   <div class="imi-caja">
     <div class="imi-num"><div class="v" id="imi-valor">0,0</div><div class="l">IMI (0–100)</div></div>
@@ -180,29 +180,54 @@ footer{text-align:center;color:var(--texto3);font-size:12px;padding:22px}
 <footer>Proyecto de título ACIF3003 — Universidad Andrés Bello · Jaime Araya Aros · Maqueta de demostración v0.B</footer>
 
 <script>
-// ── 20 controles reales (data/malla/malla-controles.yml + data/controles_criticos.csv) ──
-// [codigo, pregunta, funcion, titulo-corto]
+// ── 45 controles del set ampliado-v1 (data/controles_ampliados.csv / V6) — autodiagnóstico ──
+// [codigo, pregunta, funcion]
 const CONTROLES=[
-["A.7.1.1","¿Existe un inventario actualizado y completo de los activos de información?","IDENTIFICAR","Inventario de activos"],
-["A.7.2.1","¿La información se clasifica según sensibilidad y criticidad conforme a directrices formales?","IDENTIFICAR","Clasificación de la información"],
-["A.6.1.3","¿Están asignadas formalmente las responsabilidades de seguridad (RIS y RAI designados)?","IDENTIFICAR","Responsabilidades de seguridad"],
-["A.15.1.1","¿Se identifica y documenta la normativa aplicable (DS N°7/2023, DS N°295/2024, Ley N°21.663)?","IDENTIFICAR","Legislación aplicable"],
-["A.11.2.1","¿Existe un proceso formal de alta y baja de usuarios para el acceso a sistemas?","PROTEGER","Registro y baja de usuarios"],
-["A.10.5.1","¿Se realizan respaldos periódicos de la información y se prueban según política?","PROTEGER","Respaldo de la información"],
-["A.8.2.2","¿El personal recibe capacitación y sensibilización periódica en seguridad de la información?","PROTEGER","Concienciación y formación"],
-["A.10.4.1","¿Existen controles de detección y prevención contra código malicioso?","PROTEGER","Contra código malicioso"],
-["A.10.10.1","¿Se generan y conservan registros de auditoría (logs) de eventos de seguridad?","DETECTAR","Registros de auditoría (logs)"],
-["A.10.10.2","¿Se monitorea el uso de los sistemas de procesamiento de información?","DETECTAR","Monitoreo de sistemas"],
-["A.13.1.1","¿Existen canales formales para informar los eventos de seguridad lo antes posible?","DETECTAR","Reporte de eventos"],
-["A.13.1.2","¿El personal, contratistas y terceros reportan las debilidades observadas o sospechadas?","DETECTAR","Reporte de debilidades"],
-["A.13.2.1","¿Existen responsabilidades y procedimientos para una respuesta rápida y metódica a incidentes?","RESPONDER","Procedimientos de respuesta"],
-["A.13.2.2","¿Se cuantifican y monitorean los tipos, volúmenes y costos de los incidentes?","RESPONDER","Aprendizaje de incidentes"],
-["A.13.2.3","¿Se recolecta y preserva evidencia de incidentes de forma compatible con acciones legales?","RESPONDER","Recolección de evidencia"],
-["A.6.1.6","¿Existen contactos formales con autoridades y flujo de reporte al CSIRT Nacional (plazos DS N°295/2024)?","RESPONDER","Contacto con autoridades"],
-["A.14.1.1","¿Existe un proceso de gestión de continuidad del negocio que aborde la seguridad de la información?","RECUPERAR","Gestión de continuidad"],
-["A.14.1.3","¿Los planes de continuidad incorporan la seguridad de la información?","RECUPERAR","Continuidad con seguridad"],
-["A.14.1.4","¿Existe un marco de planificación que priorice la restauración de servicios esenciales?","RECUPERAR","Priorización de restauración"],
-["A.14.1.5","¿Los planes de continuidad se prueban y actualizan periódicamente?","RECUPERAR","Pruebas de continuidad"]];
+["A.5.1.1","¿Existe una Política de SI aprobada por acto administrativo, difundida y vigente?","IDENTIFICAR"],
+["A.5.1.2","¿Se revisa la política al menos anualmente o ante cambios significativos?","IDENTIFICAR"],
+["A.6.1.1","¿Existe un comité de seguridad constituido formalmente?","IDENTIFICAR"],
+["A.6.1.3","¿Están designados formalmente el RIS y RAI por acto administrativo?","IDENTIFICAR"],
+["A.7.1.1","¿Existe un inventario actualizado de activos de información?","IDENTIFICAR"],
+["A.7.2.1","¿Se clasifica la información según sensibilidad y criticidad?","IDENTIFICAR"],
+["A.7.2.2","¿Existe un procedimiento de etiquetado y manejo de información clasificada?","IDENTIFICAR"],
+["A.15.1.1","¿Se identifica y documenta la normativa aplicable (DS N°7/2023, DS N°295/2024, Ley N°21.663)?","IDENTIFICAR"],
+["A.15.2.1","¿Se realizan auditorías internas o revisiones periódicas de cumplimiento?","IDENTIFICAR"],
+["A.8.2.2","¿El personal recibe capacitación periódica en SI?","PROTEGER"],
+["A.10.4.1","¿Existen controles contra código malicioso?","PROTEGER"],
+["A.10.5.1","¿Se realizan respaldos periódicos con procedimiento y pruebas?","PROTEGER"],
+["A.11.1.1","¿Existe una política formal de control de acceso documentada?","PROTEGER"],
+["A.11.2.1","¿Existe un proceso formal de alta y baja de usuarios?","PROTEGER"],
+["A.11.2.3","¿Se gestiona la política de contraseñas (complejidad, cambio periódico)?","PROTEGER"],
+["A.11.5.1","¿Se controlan los privilegios de administración (mínimo privilegio)?","PROTEGER"],
+["A.12.3.1","¿Existe una política de uso de controles criptográficos para información sensible?","PROTEGER"],
+["A.10.8.4","¿Se protege la mensajería electrónica institucional?","PROTEGER"],
+["A.10.10.1","¿Se generan y conservan registros de auditoría (logs)?","DETECTAR"],
+["A.10.10.2","¿Se monitorea el uso de los sistemas de procesamiento?","DETECTAR"],
+["A.10.10.3","¿Se protegen los registros de log contra modificación no autorizada?","DETECTAR"],
+["A.10.10.4","¿Se registran las actividades de administradores y operadores?","DETECTAR"],
+["A.13.1.1","¿Existen canales formales para reportar eventos de seguridad?","DETECTAR"],
+["A.13.1.2","¿El personal reporta debilidades de seguridad observadas?","DETECTAR"],
+["A.10.10.6","¿Se sincronizan los relojes de los sistemas para la correlación de eventos?","DETECTAR"],
+["A.12.6.1","¿Se gestionan las vulnerabilidades técnicas (parches, actualizaciones)?","DETECTAR"],
+["A.6.1.8","¿Se realiza una revisión independiente de la implementación de SI?","DETECTAR"],
+["A.13.2.1","¿Existen procedimientos para una respuesta rápida a incidentes?","RESPONDER"],
+["A.13.2.2","¿Se cuantifican y monitorean los tipos y costos de incidentes?","RESPONDER"],
+["A.13.2.3","¿Se preserva evidencia compatible con acciones legales?","RESPONDER"],
+["A.6.1.6","¿Existen contactos con autoridades y flujo de reporte al CSIRT (3h/72h)?","RESPONDER"],
+["A.10.1.1","¿Están documentados los procedimientos operacionales de SI?","RESPONDER"],
+["A.10.1.2","¿Se controlan los cambios en sistemas e infraestructura?","RESPONDER"],
+["A.6.2.1","¿Se identifican y gestionan los riesgos del acceso de terceros?","RESPONDER"],
+["A.6.2.3","¿Los contratos con terceros incluyen cláusulas de seguridad?","RESPONDER"],
+["A.8.3.3","¿Existe un procedimiento de retiro de accesos al término de funciones?","RESPONDER"],
+["A.14.1.1","¿Existe un proceso de gestión de continuidad que aborde la SI?","RECUPERAR"],
+["A.14.1.2","¿Se realiza evaluación de riesgos que identifique eventos que interrumpan servicios?","RECUPERAR"],
+["A.14.1.3","¿Los planes de continuidad incorporan la SI en su desarrollo?","RECUPERAR"],
+["A.14.1.4","¿Existe un marco que priorice la restauración de servicios esenciales?","RECUPERAR"],
+["A.14.1.5","¿Se prueban y actualizan periódicamente los planes?","RECUPERAR"],
+["A.10.5.1b","¿Se verifican los respaldos mediante pruebas de restauración periódicas?","RECUPERAR"],
+["A.9.1.4","¿Se protegen los equipos contra fallas de energía y amenazas ambientales?","RECUPERAR"],
+["A.9.2.6","¿Se sanitizan los medios antes de su reutilización o descarte?","RECUPERAR"],
+["A.17.1.1","¿Se mantiene actualizado el registro de la propiedad intelectual y licencias?","RECUPERAR"]];
 
 // ── 16 aristas de prerrequisito (data/malla/malla-prerrequisitos.yml) ──
 const ARISTAS=[
@@ -213,8 +238,32 @@ const ARISTAS=[
 ["A.13.2.1","A.6.1.6"],["A.14.1.1","A.14.1.3"],["A.14.1.3","A.14.1.4"],
 ["A.14.1.4","A.14.1.5"]];
 
-// Perfil de ejemplo del MVP validado (IMI 26,7)
-const NIVELES_EJEMPLO=[2,1,2,1,2,1,1,1,1,0,1,1,1,0,1,0,0,0,0,0];
+// ── 20 controles críticos del grafo de la malla (data/malla/malla-controles.yml) ──
+// [codigo, titulo, funcion]
+const MALLA=[
+["A.7.1.1","Inventario de activos","IDENTIFICAR"],
+["A.7.2.1","Clasificación de la información","IDENTIFICAR"],
+["A.6.1.3","Responsabilidades de seguridad","IDENTIFICAR"],
+["A.15.1.1","Legislación aplicable","IDENTIFICAR"],
+["A.11.2.1","Registro y baja de usuarios","PROTEGER"],
+["A.10.5.1","Respaldo de la información","PROTEGER"],
+["A.8.2.2","Concienciación y formación","PROTEGER"],
+["A.10.4.1","Contra código malicioso","PROTEGER"],
+["A.10.10.1","Registros de auditoría (logs)","DETECTAR"],
+["A.10.10.2","Monitoreo de sistemas","DETECTAR"],
+["A.13.1.1","Reporte de eventos","DETECTAR"],
+["A.13.1.2","Reporte de debilidades","DETECTAR"],
+["A.13.2.1","Procedimientos de respuesta","RESPONDER"],
+["A.13.2.2","Aprendizaje de incidentes","RESPONDER"],
+["A.13.2.3","Recolección de evidencia","RESPONDER"],
+["A.6.1.6","Contacto con autoridades","RESPONDER"],
+["A.14.1.1","Gestión de continuidad","RECUPERAR"],
+["A.14.1.3","Continuidad con seguridad","RECUPERAR"],
+["A.14.1.4","Priorización de restauración","RECUPERAR"],
+["A.14.1.5","Pruebas de continuidad","RECUPERAR"]];
+
+// Perfil de ejemplo (organismo en etapa inicial de madurez)
+const NIVELES_EJEMPLO=[2,1,1,2,2,1,1,2,1, 1,1,2,1,1,0,1,0,1, 1,1,0,0,1,1,0,1,0, 1,0,1,1,0,0,0,0,1, 1,0,0,0,0,1,1,0,0];
 const FUNCIONES=["IDENTIFICAR","PROTEGER","DETECTAR","RESPONDER","RECUPERAR"];
 const COLOR_FN={IDENTIFICAR:"#0a84ff",PROTEGER:"#5e5ce6",DETECTAR:"#64d2ff",RESPONDER:"#ff9f0a",RECUPERAR:"#30d158"};
 const ADVERTENCIA="Esta respuesta constituye apoyo normativo y requiere validación humana; no reemplaza la decisión institucional.";
@@ -299,7 +348,7 @@ function construirTabla(){
 }
 function niveles(){return [...document.querySelectorAll("#tabla-controles select")].map(s=>+s.value);}
 function calcular(){
-  const n=niveles(); const imi=(n.reduce((a,b)=>a+b,0)/60)*100;
+  const n=niveles(); const imi=(n.reduce((a,b)=>a+b,0)/135)*100;
   const prom={}; FUNCIONES.forEach(f=>{const idx=CONTROLES.map((c,i)=>c[2]===f?i:-1).filter(i=>i>=0);
     prom[f]=idx.reduce((a,i)=>a+n[i],0)/idx.length;});
   return {imi:Math.round(imi*10)/10, prom};
@@ -345,7 +394,7 @@ function pintarPanel(){
   document.getElementById("barras-panel").innerHTML=FUNCIONES.map(f=>barra(f,prom[f])).join("");
   const objetivo=n.filter(x=>x>=2).length;
   document.getElementById("objetivo-panel").textContent=objetivo;
-  document.getElementById("brechas-panel").textContent=20-objetivo;
+  document.getElementById("brechas-panel").textContent=45-objetivo;
   const brechas=CONTROLES.map((c,i)=>({c,n:n[i]})).filter(x=>x.n<2);
   document.getElementById("brechas-txt").innerHTML=`<strong>${brechas.length} controles en brecha</strong> (nivel &lt; 2). Los más críticos: ${brechas.slice(0,4).map(x=>x.c[0]).join(", ")||"ninguno"}. En la versión funcional, el informe PDF detalla cada brecha con su exigencia normativa y recomendación.`;
 }
@@ -358,7 +407,7 @@ const HEIGHT=PADT+5*(BANDH+GYB)+22;
 const POS={};
 function construirMalla(){
   FUNCIONES.forEach((fn,r)=>{
-    const items=CONTROLES.filter(c=>c[2]===fn);
+    const items=MALLA.filter(c=>c[2]===fn);
     const yTop=PADT+r*(BANDH+GYB);
     items.forEach((c,col)=>{
       const x=PADX+col*(NW+GX), y=yTop+LBL;
@@ -408,14 +457,14 @@ function pintarMalla(){
     s+=`<path d="${edgePath(a,b)}" fill="none" stroke="${on?'#0a84ff':'#6b6b72'}" stroke-width="${on?2.4:1.5}" opacity="${dim?0.18:1}" marker-end="url(#${on?'arrOn':'arr'})"/>`;
   });
   // nodos
-  CONTROLES.forEach(c=>{
+  MALLA.forEach(c=>{
     const p=POS[c[0]]; if(!p)return;
     const dim=set&&!set.has(c[0]);
     const foco=set&&c[0]===mallaActivo;
     s+=`<g class="nodo-ctrl" onclick="clicNodo('${c[0]}')" opacity="${dim?0.3:1}">
       <rect x="${p.x}" y="${p.y}" width="${NW}" height="${NH}" rx="9" fill="#1c1c1e" stroke="${p.color}" stroke-width="${foco?2.4:1.4}"/>
       <text x="${p.x+11}" y="${p.y+19}" fill="#f2f2f7" font-size="12" font-weight="700" font-family="ui-monospace,Menlo,monospace">${c[0]}</text>
-      <text x="${p.x+11}" y="${p.y+35}" fill="rgba(235,235,245,.62)" font-size="10">${c[3].length>27?c[3].slice(0,26)+'…':c[3]}</text>
+      <text x="${p.x+11}" y="${p.y+35}" fill="rgba(235,235,245,.62)" font-size="10">${c[1].length>27?c[1].slice(0,26)+'…':c[1]}</text>
     </g>`;
   });
   const svg=document.getElementById("malla-svg");
