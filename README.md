@@ -9,7 +9,7 @@
 
 **Portal de Autogestión de Madurez y Cumplimiento Normativo en Ciberseguridad para órganos de la Administración del Estado de Chile**
 
-[🌐 **Ver demo en vivo →**](https://jarayaa.github.io/egida-demo/)
+[🌐 **Ver demo en vivo →**](https://demo.egida.uk)
 
 *ACIF3003 — Proyecto de Innovación | UNAB — Jaime Araya Aros*
 
@@ -127,7 +127,7 @@ El perfil se asigna automáticamente por el correo ingresado:
 
 | | |
 |---|---|
-| 🌐 **Demo en vivo** | [jarayaa.github.io/egida-demo](https://jarayaa.github.io/egida-demo/) |
+| 🌐 **Demo en vivo** | [demo.egida.uk](https://demo.egida.uk) |
 | 🔒 **Producción** | [egida.uk](https://egida.uk) |
 | 📁 **Repositorio principal** | [github.com/jarayaa/EGIDA](https://github.com/jarayaa/EGIDA) (privado) |
 | 🏫 **MVP no-code** | [portal-ntsic-mvp.softr.app](https://portal-ntsic-mvp.softr.app) |
