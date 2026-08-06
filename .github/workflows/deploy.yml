@@ -57,6 +57,7 @@ jobs:
           rsync -az --delete \
             --exclude '.git' --exclude '.github' --exclude 'deploy' --exclude 'README.md' --exclude '.nojekyll' \
             --exclude 'CLAUDE.md' --exclude '.githooks' --exclude '.gitattributes' \
+            --exclude 'assets' \
             ./ demo-vps:/var/www/demo.egida.uk/
 
       - name: Recargar nginx
