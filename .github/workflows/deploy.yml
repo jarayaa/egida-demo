@@ -2,12 +2,14 @@ name: Deploy demo a demo.egida.uk
 
 # CI/CD igual que el sitio principal: push a main -> GitHub Actions publica el estático
 # en la instancia OCI a través de un túnel SSH de Cloudflare Access (sin exponer el puerto 22).
+# EN PAUSA desde el 2026-08-19. `demo.egida.uk` no tiene registro DNS: este flujo copiaba el
+# estatico a un destino que no responde, y corria en cada empuje para fallar o para publicar
+# donde nadie mira. La maqueta se sirve hoy por GitHub Pages desde la rama, que no necesita
+# secretos ni consume tiempo de CI.
+#
+# No se borra: el dia que se reponga el subdominio, esta es la via —y lanzarla a mano es
+# justamente la comprobacion de que sigue sirviendo—.
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'README.md'
-      - '.github/**'
   workflow_dispatch: {}
 
 concurrency:

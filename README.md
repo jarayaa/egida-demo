@@ -2,14 +2,14 @@
 
 <div align="center">
 
-![Demo](https://img.shields.io/badge/Servicio-dado_de_baja-8e8e93?style=for-the-badge)
+![Demo](https://img.shields.io/badge/Demo-en_línea-30d158?style=for-the-badge)
 ![Autocontenida](https://img.shields.io/badge/Sin_Backend-Autocontenida-0a84ff?style=for-the-badge)
 ![NTSIC](https://img.shields.io/badge/DS_N°7/2023-NTSIC-5e5ce6?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 **Portal de Autogestión de Madurez y Cumplimiento Normativo en Ciberseguridad para órganos de la Administración del Estado de Chile**
 
-[🌐 **Sistema en producción → egida.uk**](https://egida.uk)
+[🎬 **Ver la maqueta →**](https://jarayaa.github.io/egida-demo/) · [🌐 **Sistema en producción → egida.uk**](https://egida.uk)
 
 *ACIF3003 — Proyecto de Innovación | UNAB — Jaime Araya Aros*
 
@@ -17,15 +17,21 @@
 
 ---
 
-> ## ⚠️ Estado: servicio dado de baja
+> ## 📍 Dónde está publicada
 >
-> Esta maqueta **no está publicada**. Por decisión del 2026-08-06 se retiró su publicación en
-> GitHub Pages, y `demo.egida.uk` —el destino previsto— **no tiene registro DNS**: no resuelve.
-> `index.html` es hoy un aviso de cierre, no la maqueta.
+> **[jarayaa.github.io/egida-demo](https://jarayaa.github.io/egida-demo/)** — GitHub Pages,
+> servida directamente desde la rama `main`.
 >
-> La maqueta sigue mantenida y sincronizada con la aplicación en el repositorio principal
-> (`docs/demo/index.html`), con verificación de paridad automatizada. Para reponerla hay que
-> decidir dónde: en el propio dominio a través del túnel, o volviendo a publicar este repositorio.
+> El destino previsto era `demo.egida.uk`, sobre el mismo servidor que la aplicación a través
+> del túnel; ese subdominio **no tiene registro DNS** y el flujo que lo publicaba quedó en
+> pausa, disponible para ejecución manual el día que se reponga. Entretanto la maqueta vuelve
+> a estar en línea por Pages, que no depende de ese destino ni consume tiempo de CI.
+>
+> La maqueta se mantiene **sincronizada con la aplicación**: su fuente de verdad es
+> `docs/demo/index.html` del repositorio principal, con verificación de paridad automatizada
+> —los 45 controles, la fórmula del índice, los roles, la marca, la frase de no cobertura y la
+> advertencia asistiva—. Este repositorio es el espejo publicado, no el original: los cambios
+> se hacen allá y se copian acá.
 
 ## 📖 ¿Qué es esta maqueta?
 
