@@ -2,20 +2,30 @@
 
 <div align="center">
 
-![Demo](https://img.shields.io/badge/Demo-Live-30d158?style=for-the-badge)
+![Demo](https://img.shields.io/badge/Servicio-dado_de_baja-8e8e93?style=for-the-badge)
 ![Autocontenida](https://img.shields.io/badge/Sin_Backend-Autocontenida-0a84ff?style=for-the-badge)
 ![NTSIC](https://img.shields.io/badge/DS_N°7/2023-NTSIC-5e5ce6?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 **Portal de Autogestión de Madurez y Cumplimiento Normativo en Ciberseguridad para órganos de la Administración del Estado de Chile**
 
-[🌐 **Ver demo en vivo →**](https://demo.egida.uk)
+[🌐 **Sistema en producción → egida.uk**](https://egida.uk)
 
 *ACIF3003 — Proyecto de Innovación | UNAB — Jaime Araya Aros*
 
 </div>
 
 ---
+
+> ## ⚠️ Estado: servicio dado de baja
+>
+> Esta maqueta **no está publicada**. Por decisión del 2026-08-06 se retiró su publicación en
+> GitHub Pages, y `demo.egida.uk` —el destino previsto— **no tiene registro DNS**: no resuelve.
+> `index.html` es hoy un aviso de cierre, no la maqueta.
+>
+> La maqueta sigue mantenida y sincronizada con la aplicación en el repositorio principal
+> (`docs/demo/index.html`), con verificación de paridad automatizada. Para reponerla hay que
+> decidir dónde: en el propio dominio a través del túnel, o volviendo a publicar este repositorio.
 
 ## 📖 ¿Qué es esta maqueta?
 
@@ -27,7 +37,9 @@ Una **vitrina funcional** del portal ÉGIDA que corre directamente en el navegad
 - 🤖 Asistente normativo RAG con citación obligatoria (conectado al chatbot del MVP validado)
 - 🔐 Simulación de roles (Directivo, Técnico, Operativo) asignados por correo
 
-> **Nota:** La versión funcional completa (autenticación JWT, persistencia, informes PDF, auditoría) se ejecuta con `docker compose` desde el [repositorio privado](https://github.com/jarayaa/EGIDA) y está desplegada en **https://egida.uk**.
+> **Nota:** La versión funcional completa —autenticación, persistencia, informes en PDF y
+> auditoría— está desplegada en **[egida.uk](https://egida.uk)**. Su código fuente es privado y su
+> detalle técnico no se publica.
 
 ---
 
@@ -55,7 +67,9 @@ Los **20 controles críticos** se organizan por las 5 funciones NTSIC (Identific
 
 > **Interpretación metodológica propia de ÉGIDA.** La NCh-ISO 27001.Of2009 no define un orden de implementación entre sus controles; esta secuencia de dependencias es una sugerencia de remediación del proyecto y **no constituye orden normativo ni exigencia legal**.
 
-En la versión funcional, la malla se implementa con React Flow e incluye los modos **Norma**, **Comparador** (equivalencias entre ediciones ISO) y **Evaluación** (superpone su nivel de madurez sobre el grafo).
+En la versión funcional la malla ofrece los modos **Norma**, **Comparador** —cuatro ediciones
+normativas con 467 controles y 565 correspondencias, y la ausencia de homólogo declarada cuando no
+la hay— y **Evaluación**, que superpone el nivel de madurez propio sobre el grafo.
 
 ---
 
@@ -127,7 +141,7 @@ El perfil se asigna automáticamente por el correo ingresado:
 
 | | |
 |---|---|
-| 🌐 **Demo en vivo** | [demo.egida.uk](https://demo.egida.uk) |
+| 🌐 **Sistema en producción** | [egida.uk](https://egida.uk) |
 | 🔒 **Producción** | [egida.uk](https://egida.uk) |
 | 📁 **Repositorio principal** | [github.com/jarayaa/EGIDA](https://github.com/jarayaa/EGIDA) (privado) |
 | 🏫 **MVP no-code** | [portal-ntsic-mvp.softr.app](https://portal-ntsic-mvp.softr.app) |
